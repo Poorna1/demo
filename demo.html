@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html>
+ 
+ <head>
+    
+<script src="angular.min.js"></script>
+    
+<script src="ngStorage.min.js"></script>
+  
+
+<style>
+#main
+{ 
+  height:500px;
+  margin:4px 2px;
+  text-align:center;
+  background-color:lightgrey;
+  font-size:30px;
+  border:2px solid;
+  
+}
+.button
+{
+  display:inline-block;
+  font-size:60px;
+  padding:15px 16px;
+}
+</style>
+</head>
+ 
+
+ 
+  <body>
+ 
+   <div id="main">   
+   <h3>Demo for local storage</h3>  
+  
+  <div ng-app="myapp" ng-controller="myController">
+   
+   <label>Enter a word:</label>
+      
+   <input type="text" ng-model="name">
+     
+   
+   <p class="button"><button ng-click="save()">Save</button></p>
+    
+  <p class="button"><button ng-click="show()">Show</button></p>
+      
+     
+     
+</div>
+
+</div>
+    
+   
+ <script>
+        
+var app=angular.module('myapp',["ngStorage"]);
+      
+  app.controller('myController',function($scope,$localStorage){
+       
+         
+   $scope.save = function(){
+               
+ $localStorage.message=$scope.name;
+ 
+ $scope.IsVisible=false;  
+ $scope.name=null;        
+}   
+   $scope.show = function(){
+            
+    $scope.name=$localStorage.message;
+ 
+    $scope.IsVisible=true;  
+            
+}
+            
+      
+  });
+        
+    
+</script>
+  
+</body>
+
+</html>
